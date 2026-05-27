@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="ai_voice_assistant.VoiceButton">
+        <div class="o_ai_voice_button" t-att-class="{
+            'o_ai_voice_recording': state.isRecording,
+            'o_ai_voice_processing': state.isProcessing
+        }">
+            <button
+                class="o_ai_voice_btn btn btn-sm"
+                t-att-disabled="state.isProcessing"
+                t-att-title="state.isRecording ? 'إيقاف التسجيل' : (state.isProcessing ? 'جارٍ المعالجة...' : 'تسجيل أمر صوتي')"
+                t-on-click="toggleRecording"
+            >
+                <!-- Microphone icon (recording stopped) -->
+                <i t-if="!state.isRecording and !state.isProcessing"
+                   class="fa fa-microphone" />
+
+                <!-- Stop icon (recording active) -->
+                <i t-elif="state.isRecording"
+                   class="fa fa-stop-circle" />
+
+                <!-- Spinner (processing) -->
+                <i t-else=""
+                   class="fa fa-spinner fa-spin" />
+
+                <!-- Recording pulse indicator -->
+                <span t-if="state.isRecording" class="o_ai_voice_pulse" />
+            </button>
+        </div>
+    </t>
+
+</templates>
