@@ -1,0 +1,54 @@
+.o_ai_voice_button {
+    display: flex;
+    align-items: center;
+
+    .o_ai_voice_btn {
+        position: relative;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: transparent;
+        border: none;
+        color: var(--NavBar-color, #fff);
+        font-size: 1rem;
+        transition: color 0.2s, background 0.2s;
+
+        &:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: default;
+        }
+    }
+
+    &.o_ai_voice_recording .o_ai_voice_btn {
+        color: #ff4d4d;
+        animation: o_ai_voice_glow 1s ease-in-out infinite alternate;
+    }
+
+    .o_ai_voice_pulse {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ff4d4d;
+        animation: o_ai_voice_blink 0.8s step-start infinite;
+    }
+}
+
+@keyframes o_ai_voice_glow {
+    from { text-shadow: 0 0 4px rgba(255, 77, 77, 0.6); }
+    to   { text-shadow: 0 0 12px rgba(255, 77, 77, 1); }
+}
+
+@keyframes o_ai_voice_blink {
+    50% { opacity: 0; }
+}
