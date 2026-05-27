@@ -50,9 +50,9 @@ def test_health():
     with urllib.request.urlopen(f"{BASE_URL}/health") as r:
         data = json.loads(r.read())
     check(data["status"] == "ok", "status = ok")
-    check(data["mode"] == "mock", "وضع المحاكاة مفعّل")
+    check(data["provider"] == "mock", "وضع المحاكاة مفعّل")
     check(data["active_subscribers"] == 2, "عدد المشتركين = 2")
-    print(f"  ℹ️  mode={data['mode']}, subscribers={data['active_subscribers']}")
+    print(f"  ℹ️  provider={data['provider']}, subscribers={data['active_subscribers']}")
 
 
 def test_unauthorized_uuid():
